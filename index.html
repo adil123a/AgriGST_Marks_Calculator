@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri GPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            input, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Agri GPA Marks Calculator</h2>
+        <label for="sscMarks">SSC Total Marks (Without 4th Subject):</label>
+        <input type="number" id="sscMarks" placeholder="Enter SSC Marks">
+        
+        <label for="hscMarks">HSC Total Marks (Without 4th Subject):</label>
+        <input type="number" id="hscMarks" placeholder="Enter HSC Marks">
+        
+        <button onclick="calculateResult()">Calculate</button>
+        
+        <h3>Result: <span id="result">0</span></h3>
+    </div>
+
+    <script>
+        function calculateResult() {
+            let sscMarks = parseFloat(document.getElementById("sscMarks").value) || 0;
+            let hscMarks = parseFloat(document.getElementById("hscMarks").value) || 0;
+            
+            let sscScore = (sscMarks / 1050) * 25;
+            let hscScore = (hscMarks / 1100) * 25;
+            
+            let totalScore = sscScore + hscScore;
+            
+            document.getElementById("result").innerText = totalScore.toFixed(2);
+        }
+    </script>
+</body>
+</html>
